@@ -1,0 +1,18 @@
+// Conteúdo de prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo da Música
+model Musica {
+  id        Int     @id @default(autoincrement())
+  nome      String
+  banda     String  @map("nome_da_banda") // Mapeia para a coluna 'nome_da_banda'
+  produtora String? // '?' torna o campo opcional
+}
