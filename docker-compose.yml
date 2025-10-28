@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # 1. Serviço do PostgreSQL
+  db:
+    image: postgres:16-alpine 
+    restart: always
+    environment:
+      # Variáveis de ambiente 
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: consultamusicas_db # Nome do seu banco de dados
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+# 2. Definição do volume
+volumes:
+  postgres_data:
